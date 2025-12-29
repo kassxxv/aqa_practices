@@ -111,6 +111,6 @@ print(f'\nІгорю знадобиться {ceil(232/8)} сторінок, що
 """
 distance_between_cities = 1600
 tank_capacity = 48
-fuel_needed = (1600//100)*9
+fuel_needed = (distance_between_cities/100)*9
 print(f'\nДля такої подорожі знадобиться {fuel_needed} літрів бензину. \n'
-      f'Родині потрібно заїхати щонайменше {ceil((fuel_needed - tank_capacity) / tank_capacity)} разів на заправку, заправляючи повний бак.') # виїдемо з повним баком
+      f'Родині потрібно заїхати щонайменше {(ceil(fuel_needed / tank_capacity)) - 1} разів на заправку, заправляючи повний бак.') # виїдемо з повним баком
