@@ -44,7 +44,7 @@ first_and_second_warehouse = 250449
 second_and_third_warehouse = 222950
 first_warehouse = total_products - second_and_third_warehouse
 third_warehouse = total_products - first_and_second_warehouse
-second_warehouse = total_products - first_warehouse + (total_products - third_warehouse)
+second_warehouse = first_and_second_warehouse - first_warehouse
 print(f'\nНа першому складі {first_warehouse} товарів.\nНа другому складі {second_warehouse} товарів.\nНа третьому складі {third_warehouse} товарів.')
 
 # task 06
@@ -96,7 +96,7 @@ print(f'\nЗагалом Іринці знадобиться {big_pizza_price+me
 розміщено щонайбільше 8 фото. Скільки сторінок знадобиться
 Ігорю, щоб вклеїти всі фото?
 """
-print(f'\nІгорю знадобиться {ceil(232//8)} сторінок, щоб вклеїти всі фото.')
+print(f'\nІгорю знадобиться {ceil(232/8)} сторінок, щоб вклеїти всі фото.')
 
 # task 10
 """
