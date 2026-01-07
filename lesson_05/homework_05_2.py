@@ -4,6 +4,7 @@
 # 3 - check that all people in modified list with records indexes 6, 10, 13
 #   have age >=30. Print condition check result
 people_records = [
+  # тут +1 запис після вставки нового
   ('Alice', 'Smith', 35, 'Teacher', 'Los Angeles'),
   ('Bob', 'Johnson', 45, 'Doctor', 'Chicago'),
   ('Emily', 'Williams', 30, 'Artist', 'San Francisco'),
@@ -21,12 +22,12 @@ people_records = [
 ]
 # 1
 people_records.insert(0, ('Filip', 'Fylyp', 18, None, 'Kosice'))
-print(people_records)
 # 2
 people_records[1], people_records[5] = people_records[5], people_records[1]
 print(people_records)
 # 3
-if people_records[6][2] >= 30 and people_records[10][2] >= 30 and people_records[13][2] >= 30:
+age_idx = 2
+if people_records[6][age_idx] >= 30 and people_records[10][age_idx] >= 30 and people_records[13][age_idx] >= 30:
     print(f'Кожна людина на індексах 6, 10, 13 є старша за 30 років')
 else:
     print('Перевірка не пройдена: Хтось із них молодший за 30.')
