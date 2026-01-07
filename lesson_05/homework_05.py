@@ -5,6 +5,8 @@
 # We should print up to five (5) first found elements
 from ctypes.macholib.framework import framework_info
 
+from requests.sessions import preferred_clock
+
 car_data = {
   'Mercedes': ('silver', 2019, 1.8, 'sedan', 50000),
   'Audi': ('black', 2020, 2.0, 'sedan', 55000),
@@ -47,11 +49,12 @@ car_data = {
   'Nissan Titan': ('silver', 2018, 5.6, 'pickup', 35000)
 }
 search_criteria = (2017, 1.6, 36000)
-
+year_criteria, engine_criteria, price_criteria = search_criteria
 filtered_cars = {}
 
 for car in car_data:
-    if (car_data[car][1] >= search_criteria[0]) and (car_data[car][2] >= search_criteria[1]) and (car_data[car][-1] <= search_criteria[-1]):
+    _, year, engine, _, price = car_data[car]
+    if (year >= year_criteria) and (engine >= engine_criteria) and (price <= price_criteria):
         filtered_cars[car] = car_data[car]
 
 from_dict_to_list = list(filtered_cars.items())
