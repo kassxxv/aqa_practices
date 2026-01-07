@@ -3,10 +3,6 @@
 # write code that will help us to get cars that satisfy search_criteria.
 # Cars should be sorted by price ascending.
 # We should print up to five (5) first found elements
-from ctypes.macholib.framework import framework_info
-
-from requests.sessions import preferred_clock
-
 car_data = {
   'Mercedes': ('silver', 2019, 1.8, 'sedan', 50000),
   'Audi': ('black', 2020, 2.0, 'sedan', 55000),
@@ -49,18 +45,14 @@ car_data = {
   'Nissan Titan': ('silver', 2018, 5.6, 'pickup', 35000)
 }
 search_criteria = (2017, 1.6, 36000)
-year_criteria, engine_criteria, price_criteria = search_criteria
 filtered_cars = {}
 
-for car in car_data:
-    _, year, engine, _, price = car_data[car]
-    if (year >= year_criteria) and (engine >= engine_criteria) and (price <= price_criteria):
-        filtered_cars[car] = car_data[car]
+for key, value in car_data.items():
+    color, year, engine, type_of_car, price = value
+    if (year >= search_criteria[0]) and (engine >= search_criteria[1]) and (price <= search_criteria[2]):
+        filtered_cars[key] = value
 
-from_dict_to_list = list(filtered_cars.items())
-sorted_cars = sorted(from_dict_to_list, key= lambda elm: elm[-1][-1], reverse=False)[:5]
+sorted_cars = sorted(filtered_cars.items(), key=lambda elm: elm[-1][-1])[:5]
 
-for key, values in sorted_cars:
-    color, year, engine, car_type, price = values
-    print(f'Автомобіль {key} {car_type}, {color} кольору, {year} року випуску, з обє\'мом {engine} за ціною {price} грн.')
-
+for brand, (color, year, engine, car_type, price) in sorted_cars:
+    print(f'Автомобіль {brand} {car_type}, {color} кольору, {year} року випуску, з обє\'мом {engine} за ціною {price} грн.')
