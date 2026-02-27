@@ -260,8 +260,8 @@ def get_birthdate(startAge = None, endAge = None, _format = "%d %b, %Y"):
 def get_address():
 	full_addr = []
 	addrParam = ['street', 'landmark', 'area', 'city', 'state', 'country', 'pincode']
-	for i in range(5,12):
-		addrFile = csv.reader(open(full_path('data.csv'), 'r'))
+	for i in [4, 5, 6, 7, 8, 10, 9]:
+		addrFile = csv.reader(open(full_path('data.csv'), 'r', encoding='utf-8'))
 		allAddrs = []
 		for addr in addrFile:
 			try:
@@ -269,7 +269,7 @@ def get_address():
 					allAddrs.append(addr[i])
 			except:
 				pass
-		full_addr.append(choice(allAddrs))
+		full_addr.append(choice(allAddrs) if allAddrs else None)
 	full_addr = dict(zip(addrParam, full_addr))
 	return full_addr
 
