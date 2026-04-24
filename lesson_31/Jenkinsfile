@@ -1,6 +1,13 @@
 pipeline {
     agent any
 
+    environment {
+        POSTGRES_USER     = 'postgres'
+        POSTGRES_HOST     = 'localhost'
+        POSTGRES_DB       = 'postgres'
+        POSTGRES_PASSWORD = credentials('db-password')
+    }
+
     stages {
         stage('Checkout') {
             steps {
