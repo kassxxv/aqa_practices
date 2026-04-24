@@ -1,0 +1,45 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                bat 'python -m pip install --upgrade pip'
+                bat 'pip install -r lesson_30/requirements.txt'
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                bat 'pytest lesson_30/test_homework_30.py --junitxml=test-results.xml --alluredir=allure-results'
+            }
+        }
+
+        stage('Publish Results') {
+            steps {
+                junit 'test-results.xml'
+            }
+        }
+    }
+
+    post {
+        always {
+            emailext(
+                subject: "Build ${currentBuild.currentResult}: Job ${env.JOB_NAME} [${env.BUILD_NUMBER}]",
+                body: """
+                    Job: ${env.JOB_NAME}
+                    Build: #${env.BUILD_NUMBER}
+                    Status: ${currentBuild.currentResult}
+                    URL: ${env.BUILD_URL}
+                """,
+                to: 'InsertYour@Mail.Here'
+            )
+        }
+    }
+}
