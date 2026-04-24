@@ -5,7 +5,7 @@ pipeline {
         POSTGRES_USER     = 'postgres'
         POSTGRES_HOST     = 'localhost'
         POSTGRES_DB       = 'postgres'
-        POSTGRES_PASSWORD = credentials('db-password')
+        POSTGRES_PASSWORD = '_FILIP_Tv1'
     }
 
     stages {
