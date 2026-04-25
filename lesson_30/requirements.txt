@@ -1,0 +1,6 @@
+pony==0.7.19
+psycopg2-binary>=2.9.10
+Faker==33.3.0
+pytest==8.3.4
+allure-pytest==2.13.5
+python-dotenv==1.0.1
